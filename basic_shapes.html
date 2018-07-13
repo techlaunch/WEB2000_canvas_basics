@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <script>
+
+    var c = document.createElement('canvas');
+    c.width = window.innerWidth - 50;
+    c.height = window.innerHeight - 50;
+
+    document.body.appendChild(c);
+
+    var ctx = c.getContext("2d");
+
+    ctx.moveTo(0, 0);
+    ctx.lineTo(200, 100);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(300, 50, 40, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    ctx.font = "30px Arial";
+    ctx.fillText("Hello World", 500, 50);
+
+    // Create gradient
+    var grd = ctx.createLinearGradient(0, 0, 200, 0);
+    grd.addColorStop(0, "red");
+    grd.addColorStop(1, "white");
+
+    // Fill with gradient
+    ctx.fillStyle = grd;
+    ctx.fillRect(10, 200, 150, 80);
+
+    var img = new Image(50, 50);
+    img.src = './spaceship.png';
+    img.onload = () => ctx.drawImage(img, 200, 200, 200, 200);
+
+  </script>
+</body>
+</html>
